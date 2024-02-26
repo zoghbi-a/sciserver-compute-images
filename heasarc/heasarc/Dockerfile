@@ -178,34 +178,5 @@ if [ -f /home/${user}/workspace/Storage/*/persistent/.bashrc ]; then\n\
 fi\n" >> /home/${user}/.bashrc
 
 ## add js9 ##
-RUN mamba install -y -c conda-forge -n $pythonenv \
-    cfitsio \
-    sidecar \
-    jupyter-server-proxy \
-    # fix for socket.io to work
-    && sed -i "s/subprotocols=self.subprotocols,/#&/" \
-        /home/$user/miniconda3/envs/heasoft/lib/python3.10/site-packages/jupyter_server_proxy/handlers.py \
-    && mamba clean -y --all
-
-ENV JS9_WEB_PATH=/opt/js9-web/
-USER root
-RUN git clone -b jh_updates --depth=1 https://github.com/zoghbi-a/js9.git /tmp/js9 && \
-    cd /tmp/js9 && \
-    ./configure --prefix=/usr/local \
-        --with-helper=nodejs \
-        --with-webdir=$JS9_WEB_PATH \
-        --with-cfitsio=/home/idies/miniconda3/envs/heasoft && \
-    make && \
-    make install
-
-# ADD js9prefs.js index.html /opt/js9-web/
-RUN cd $JS9_WEB_PATH && \
-    npm i socket.io uuid rimraf
-USER $user
-
-RUN git clone -b socket-fix --depth=1 https://github.com/zoghbi-a/pyjs9.git /tmp/pyjs9 \
- && conda run -n $pythonenv pip install /tmp/pyjs9 \
- && git clone --depth=1 https://github.com/zoghbi-a/jpyjs9.git /tmp/jpyjs9 \
- && conda run -n $pythonenv pip install /tmp/jpyjs9 \
- && rm -rf /tmp/jupyter-server-proxy /tmp/pyjs9 /tmp/pyjs9
+RUN conda run -n $pythonenv pip install git+https://github.com/duytnguyendtn/jpyjs9@multi
 ## ------- ##
