@@ -1,6 +1,6 @@
 {
     "heasoft": {
-        "version": "6.35.1",
+        "version": "6.35.2",
         "pyversion": "3.12"
     },
     
@@ -11,7 +11,7 @@
     },
     
     "fermi": {
-        "version": "2.2.0"
+        "version": "2.4"
     },
     
     "xmmsas": {
@@ -26,7 +26,7 @@
     },
 
     "heasarc": {
-        "version": "0.8",
+        "version": "0.9",
         "NOVNC_VERSION": "1.3.0",
         "DS9_VERSION": "8.5"
     },

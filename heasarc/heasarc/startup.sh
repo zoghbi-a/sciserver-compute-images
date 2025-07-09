@@ -16,5 +16,4 @@ cd /home/$user
     --NotebookApp.quit_button=False \
     --NotebookApp.base_url=$1 \
     \
-    --LabApp.default_url='/lab/tree/sciserver_cookbooks/introduction.md' \
     --ServerApp.MultiKernelManager.default_kernel_name='conda-env-heasoft-py'
