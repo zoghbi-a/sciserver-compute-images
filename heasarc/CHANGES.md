@@ -71,3 +71,12 @@
 - Update ciao, xmm-sas
 - Add support for large files in js9
 - Update python to 3.12 and get the latest conda and jupyterlab=4.3.6
+
+# Version 0.9
+---
+- Update fermitools to 2.4
+
+# Version 0.10
+---
+- Update heasoft to 6.36
+- Update the base ubuntu image to 24.02

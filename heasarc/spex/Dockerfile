@@ -25,7 +25,7 @@ RUN mkdir -p $spex_dir
 WORKDIR $spex_dir
 
 RUN apt-get update \
- && apt-get install -y libncurses5 \
+ && apt-get install -y libncurses6 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
