@@ -1,8 +1,11 @@
 FROM ubuntu:24.04
 
-RUN useradd -m idies \
-    && mkdir /home/idies/workspace \
-    && chown idies:idies /home/idies/workspace
+RUN usermod -l idies -m -d /home/idies ubuntu \
+    && groupmod -n idies ubuntu \
+    && gpasswd -d idies sudo \
+    && usermod -d /home/idies idies \
+    && mkdir -p /home/idies/workspace \
+    && chown -R idies:idies /home/idies
 
 ARG DEBIAN_FRONTEND=noninteractive
 
